@@ -13,17 +13,25 @@ class Dice:
         self.current[index-1]=num    #Saves generated number to the list of current dice at given index
         
     def reroll(self, keep):           #takes a list of indecies of dice that player wants to keep, from 1-5 for user experience
+        '''
         pickup=self.current
         for i in keep:
             try:
                 pickup.remove(i)
             except:
                 continue
-        for i in pickup:
-            self.roll(self.current.index(i))
+        '''
+        pickup=[]
+        for k in self.current:
+            pickup.append(k)
+        for i in keep:
+            try:
+                pickup.remove(i)
+            except:
+                continue
+        for j in pickup:
+            self.roll(self.current.index(j)+1)
         self.roll_num+=1
-        #print(f"Roll Number: {self.roll_num}")
-        #print(f"Roll: {self.current}")
 
     def reset(self):
         roll_num=0
@@ -38,13 +46,7 @@ def main():
     test=Dice()
 
     
-    count=[0,0,0,0,0,0]
-    runs=int(input("runs: "))
-    for i in range(runs):
-        test.reroll([])
-        for i in test.current:
-            count[i-1]+=1
-    print(count)
+    
     
 
     print(test.current)
