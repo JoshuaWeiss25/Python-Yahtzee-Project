@@ -1,0 +1,3 @@
+this folder is where the pickle files for the scorekeeping goes. if this folder does not exist, the code will not work. it cannot create new folders.
+
+old files will not be deleted, i don't have the knowhow to do that. however, files can and will be reused. at the begining of a game, the player 1 scorecard (and other neceesary player scorecards) will be overwritten and set to zero
