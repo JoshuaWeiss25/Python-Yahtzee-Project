@@ -1,0 +1,57 @@
+____    ____  ___       __    __  .___________.________   _______  _______ 
+\   \  /   / /   \     |  |  |  | |           |       /  |   ____||   ____|
+ \   \/   / /  ^  \    |  |__|  | `---|  |----`---/  /   |  |__   |  |__   
+  \_    _/ /  /_\  \   |   __   |     |  |       /  /    |   __|  |   __|  
+    |  |  /  _____  \  |  |  |  |     |  |      /  /----.|  |____ |  |____ 
+    |__| /__/     \__\ |__|  |__|     |__|     /________||_______||_______|
+                                                                           
+
+The Rules to Yahtzee:
+ - There are 13 rounds in total
+ - There are five dice that you roll at once
+ - When it is your turn for the round you get to roll up to 3 times
+ - You can choose which dice you would like to keep and which ones you want to reroll
+ - When choosing which dice you want to reroll you will be given a prompt on how many dice you want to reroll:
+      - You will be asked which die number you wish to keep, please input only one number and place the number you rolled
+      - You will be given the prompt of which die number you wish to keep as many times as the number you places 
+      (i.e. you entered 3 you will get the prompt 3 times)
+ - You enter your score depending on what roll you got:
+      - these are the possible combos:
+            Aces: Having at least one 1 dice (point value: the sum of all your 1s)
+            Twos: Having at least one 2 dice (point value: the sum of all your 2s)
+            Threes: Having at least one 3 dice (point value: the sum of all your 3s)
+            Fours: Having at least one 4 dice (point value: the sum of all your 4s)
+            Fives: Having at least one 5 dice (point value: the sum of all your 5s)
+            Sixes: Having at least one 6 dice (point value: the sum of all your 6s)
+            3 of a kind: Three identical dice (point value: the sum of all your dice)
+            4 of a kind: Four identical dice (point value: the sum of all your dice)
+            Full House: A pair of identical dice and a trio of identical dice (worth 25 points)
+            Small Straight: A 1, 2, 3, and 4; a 2, 3, 4, and 5; or a 3, 4, 5, and 6 (worth 30 points)
+            Large Straight: A 1, 2, 3, 4, and 5 or a 2, 3, 4, 5, and 6 (worth 40 points)
+            Yahtzee: Five identical dice (worth 50 points)
+            Chance: Any assortment of 5 dice (point value: the sum of all your dice)
+      - At times, it may be neccessary to put a score of 0 in a space (sometimes called "goose-ing" the space). This is allowed, but only recomended if you 
+        have already taken your "Chance". Choose which slot wisely.
+ - At the end of the game you add up all your scores
+      - For the top subtotal (Aces, Twos, Threes, Fours, Fives, Sixes) on the scoreboard, if you score higher than or equal to 63 in total, you get a bonus of 35 points
+      - A top subtotal of exactly 63 can gotten from having 3 of each number for each slot.
+ - At the beginning of the game you will be asked a number of players; there is no limit, but playing with too many 
+   people could result in unintended consequences. See warning at bottom of document.
+ - After finishing your rolls, you will be given a prompt to where you want to place your roll in your scorecard
+ - This will continue until the 13 rounds are finished, and whoever has the highest amount of points wins
+
+notes about inputs:
+ - you cannot undo an input, so be carefull
+ - all numerical inputs require the number in numerical form, and not in text form. (i.e. "2" and not "two", or "6" and not "six")
+ - if you enter an invalid input, you will be told as such and asked the same question again
+ - when re-rolling dice, if you enter a number that you haven't rolled, it will be ignored.
+     - on that same track, if you need to keep multiple of a number, enter the number twice
+
+
+What can too many players do?
+      While the game theoretically supports up to the integer limit (2147483647) of players, high number of players would significantly 
+      increase the time to run everything, and can even lead to crashes. In addition, due to limitations the code not being
+      able to delete old scorecards, it would lead to large file sizes. (it can overwrite old scorecards, however, and does
+      every game.) 
+
+      In addition, depending on your screen size, too many players can lead to too many columns to properly display the scorecard table
