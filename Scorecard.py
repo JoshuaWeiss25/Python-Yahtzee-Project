@@ -20,24 +20,24 @@ def new_scorecard(player_num):
         }
         pickle.dump(score_dict,file)
 
-def get_SC(player_num):                        #returns all data from specified scorecard
+def get_SC(player_num):                         #returns all data from specified scorecard
     filename="./Scorecards/Player"+str(player_num)+"_Score.pkl"
     with open(filename,"rb") as file:
         return pickle.load(file)
 
-def edit_SC(player_num,row,data):              #replaces with new data at specified row in specified scorecard          
+def edit_SC(player_num,row,data):               #replaces with new data at specified row in specified scorecard          
     filename="./Scorecards/Player"+str(player_num)+"_Score.pkl"
-    scorecard={}                            #make temp var
-    scorecard=get_SC(player_num)        #opens the file and saves it to a temp var
-    scorecard[row]=data                     #Edit scorecard
+    scorecard={}                                #make temp var
+    scorecard=get_SC(player_num)                #opens the file and saves it to a temp var
+    scorecard[row]=data                         #Edit scorecard
     with open(filename,"wb") as file:
-        pickle.dump(scorecard,file)         #saves the temp var by overwriting file
+        pickle.dump(scorecard,file)             #saves the temp var by overwriting file
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def row_1s(player_num,dice):
     ##calculate score
-    score=dice.count(1)*1
+    score=dice.count(1)*1                      #adding up all the value for the 1s.
     ##save the score
     if not get_SC(player_num)["1s"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"1s",[True,score])
@@ -48,7 +48,7 @@ def row_1s(player_num,dice):
 
 def row_2s(player_num,dice):
     ##calculate score
-    score=dice.count(2)*2
+    score=dice.count(2)*2                      #adding up all the value for the 2s.
     ##save the score
     if not get_SC(player_num)["2s"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"2s",[True,score])
@@ -59,7 +59,7 @@ def row_2s(player_num,dice):
 
 def row_3s(player_num,dice):
     ##calculate score
-    score=dice.count(3)*3
+    score=dice.count(3)*3                      #adding up all the value for the 3s.
     ##save the score
     if not get_SC(player_num)["3s"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"3s",[True,score])
@@ -70,7 +70,7 @@ def row_3s(player_num,dice):
 
 def row_4s(player_num,dice):
     ##calculate score
-    score=dice.count(4)*4
+    score=dice.count(4)*4                      #adding up all the value for the 4s.
     ##save the score
     if not get_SC(player_num)["4s"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"4s",[True,score])
@@ -81,7 +81,7 @@ def row_4s(player_num,dice):
 
 def row_5s(player_num,dice):
     ##calculate score
-    score=dice.count(5)*5
+    score=dice.count(5)*5                      #adding up all the value for the 5s.
     ##save the score
     if not get_SC(player_num)["5s"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"5s",[True,score])
@@ -92,7 +92,7 @@ def row_5s(player_num,dice):
 
 def row_6s(player_num,dice):
     ##calculate score
-    score=dice.count(6)*6
+    score=dice.count(6)*6                      #adding up all the value for the 6s.
     ##save the score
     if not get_SC(player_num)["6s"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"6s",[True,score])
@@ -101,11 +101,11 @@ def row_6s(player_num,dice):
     else:
         return False
 
-def row_3of(player_num,dice):
+def row_3of(player_num,dice):                   
     score=0
     for i in range(6):
-        if dice.count(i+1)>=3:
-            score=sum(dice)
+        if dice.count(i+1)>=3:                  #check that at least 3 dice have equal values
+            score=sum(dice)                     #if so, then sum all the dice for a score
             break
     if not get_SC(player_num)["3of"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"3of",[True,score])
@@ -117,8 +117,8 @@ def row_3of(player_num,dice):
 def row_4of(player_num,dice):
     score=0
     for i in range(6):
-        if dice.count(i+1)>=4:
-            score=sum(dice)
+        if dice.count(i+1)>=4:                  #check that at least 4 dice have equal values
+            score=sum(dice)                     #if so, then sum all the dice for a score
             break
     if not get_SC(player_num)["4of"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"4of",[True,score])
@@ -132,12 +132,12 @@ def row_FH(player_num,dice):
     trip=0
     score=0
     for i in range(6):
-        if dice.count(i+1)==3:
+        if dice.count(i+1)==3:                 #check that three dice are the same
             trip=i+1
-        if dice.count(i+1)==2:
+        if dice.count(i+1)==2:                 #check that two dice are the same
             doub=i+1
     if doub!=0 and trip!=0:
-        score=25
+        score=25                               #score 25 points if the two conditions are true
     if not get_SC(player_num)["FH"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"FH",[True,score])
         print(f"You played a {score} in your Full House.")
@@ -148,10 +148,10 @@ def row_FH(player_num,dice):
 def row_SmS(player_num,dice):
     score=0
     dice.sort()
-    dice=list(set(dice))            #gets rid of duplicates
-    if dice==[1,2,3,4] or dice==[2,3,4,5] or dice==[3,4,5,6]:
+    dice=list(set(dice))                                        #gets rid of duplicates
+    if dice==[1,2,3,4] or dice==[2,3,4,5] or dice==[3,4,5,6]:   #check all possible combinations
         score=30
-    if not get_SC(player_num)["SmS"][0]:        #run only if the row hasn't been scored before
+    if not get_SC(player_num)["SmS"][0]:                        #run only if the row hasn't been scored before
         edit_SC(player_num,"SmS",[True,score])
         print(f"You played a {score} in your Small Straight.")
         return True
@@ -161,7 +161,7 @@ def row_SmS(player_num,dice):
 def row_LgS(player_num,dice):
     dice.sort()
     score=0
-    if dice==[1,2,3,4,5] or dice==[2,3,4,5,6]:
+    if dice==[1,2,3,4,5] or dice==[2,3,4,5,6]:  #check all possible combinations
         score=40
     if not get_SC(player_num)["LgS"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"LgS",[True,score])
@@ -173,7 +173,7 @@ def row_LgS(player_num,dice):
 def row_Yah(player_num,dice):
     score=0
     for i in range(6):
-        if dice.count(i+1)==5:
+        if dice.count(i+1)==5:                  #check if all dice are the same
             score=50
             break
     if not get_SC(player_num)["Yah"][0]:        #run only if the row hasn't been scored before
@@ -184,7 +184,7 @@ def row_Yah(player_num,dice):
         return False
 
 def row_Cha(player_num,dice):
-    score=sum(dice)
+    score=sum(dice)                             #add all dice values together
     if not get_SC(player_num)["Cha"][0]:        #run only if the row hasn't been scored before
         edit_SC(player_num,"Cha",[True,score])
         print(f"You played a {score} in your Chance.")

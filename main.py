@@ -10,23 +10,27 @@ def display_rules(filename):
         with open(filename,'r') as file:
             for line in file:
                 print(line)
-        play_yahtzee()
+        play_yahtzee(13)
     elif rules.lower().strip() in ["no","n","nope"]:
-        play_yahtzee()
+        play_yahtzee(13)
+    elif rules.lower().strip()=="short":   #allows for a shorter game
+        play_yahtzee(4)
     else:
         print("Invalid response, please try again.")
         display_rules(filename)
 
-def play_yahtzee():
+
+#run the actual game
+def play_yahtzee(rounds):
     D=Dice.Dice()                   #initialize the dice class as D
     valid_in0=False                 #here to line 23 will keep asking "How many players: " until valid input
     while not valid_in0:    
         try:
             num_players = int(input("How many players: "))
-            if num_players<0:
-                raise ValueError
             if num_players==0:
                 sys.exit()
+            if num_players<=-1:
+                raise ValueError
             if num_players>15:
                 verify=input("Are you sure? High numbers of players can have unintended consequences. See UserGuide.txt for more info. (Y/N):")
                 if verify.lower().strip() in ["no","n","nope"]:
@@ -49,18 +53,18 @@ def play_yahtzee():
                     sys.exit()
             valid_in0=True
             
-        except:
+        except ValueError:
             print("Invalid input. Please try again")
     for i in range(num_players):        #create new blank scorecards for each player (or overwrite old ones)
         try:
             SC.new_scorecard(i+1)
         except OSError:
-            print("Too many players, or other error when creating scorecards, such as not enough disk space. Ending program.")      #no other choice, could not find a way to keep runing the program, so have to exit
+            print("Too many players, or other error when creating scorecards. Ending program. \nPossible reasons for error: Not enough disk space; Scorecards folder does not exist")      #no other choice, could not find a way to keep runing the program, so have to exit
             sys.exit()
     
     table=Table.SCtable(num_players) #makes the scorecard table
 
-    for i in range(13):                 #13 rounds
+    for i in range(rounds):                 #13 rounds
         for player_r in range(num_players):     #cycles through the players for each round
             player=player_r+1
             
@@ -81,7 +85,7 @@ def play_yahtzee():
                 
                 
                 
-                if turn<3:
+                if turn<3:                              #making sure you don't roll more than 3 times.
                     valid_in1=False                     #here to line 101 will keep asking "Roll again? (Y/N): " until valid input
                     while not valid_in1:
                         player_input = input("Roll again? (Y/N): ")
@@ -89,22 +93,22 @@ def play_yahtzee():
                             valid_in1=True
                             is_rolling == True
                             valid_in2=False             #here to line 74 will keep asking "How many players: " until valid input
-                            max=0
+                            maxx=0
                             while not valid_in2:
                                 try:
                                     max_in=input("How many dice do you want to want to keep: ")
                                     if max_in.lower()=="exit":
                                         print("Exiting game.")
                                         sys.exit()
-                                    max = int(max_in.strip())
-                                    if max>5 or max<0:
+                                    maxx = int(max_in.strip())
+                                    if maxx>5 or maxx<0:        #should not remove more dice than the amount that exists
                                         raise ValueError
                                     valid_in2=True
                                 except ValueError:
                                     print("Invalid input. Please try again.")
                             
                             usr_list = []
-                            for j in range(max):
+                            for j in range(maxx):      #iterate over the number of dice to remove (maxx)
                                 valid_in3=False        #here to line 91 will keep asking "How many players: " until valid input
                                 while not valid_in3:
                                     try:
@@ -113,7 +117,7 @@ def play_yahtzee():
                                             print("Exiting game.")
                                             sys.exit()
                                         dice_num = int(dice_num_in.strip())
-                                        if dice_num>6 or dice_num<0:
+                                        if dice_num>6 or dice_num<0:            #can not remove non existant dice values
                                             raise ValueError
                                         usr_list.append(dice_num)
                                         valid_in3=True
@@ -177,21 +181,20 @@ def play_yahtzee():
 
     table.printTable()
                                 #ADD: Anounce the winner
-    if table.grandTotal.count(max(table.grandTotal))==1:        #if there isn't a tie...
-        winner=table.grandTotal.index(max(table.grandTotal))+1
+    if table.get_grand().count(max(table.get_grand()))==1:        #if there isn't a tie... (aka if the maximum value in the table only occurs once)
+        winner=table.get_grand().index(max(table.get_grand()))+1  #find the winner 
         print(f"The winner is player {winner}! Congragulations player {winner}!")
     else:
-        final_scores=table.grandTotal
+        final_scores=table.get_grand()
         winners = []       
-        for num in range(len(final_scores)):
-            if final_scores[num] == max(table.grandTotal):
-                winners.append(num+1)
+        for num in range(len(final_scores)):                       #iterate over all final scores...
+            if final_scores[num] == max(table.get_grand()):        #if the final score is a maximun score then you know there is a winner
+                winners.append(num+1)                              #add winner to a list
         print("There is a tie between the following players:") 
         for i in winners:
             print(f"Player {i}")
 
 def main():
-
     filename = 'UserGuide.txt'
     display_rules(filename)
     

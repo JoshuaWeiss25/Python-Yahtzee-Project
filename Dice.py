@@ -9,10 +9,10 @@ class Dice:
             self.roll(i+1)
     
     def roll(self,index):            #takes the index of the list of current dice, starting from 1 instead of 0 for user experience
-        num=random.randint(6)+1 #Generates number from 1-6
+        num=random.randint(6)+1      #Generates number from 1-6
         self.current[index-1]=num    #Saves generated number to the list of current dice at given index
         
-    def reroll(self, keep):           #takes a list of indecies of dice that player wants to keep, from 1-5 for user experience
+    def reroll(self, keep):          #takes a list of numers that the user wants to keep
         '''
         pickup=self.current
         for i in keep:
@@ -57,3 +57,4 @@ def main():
 if __name__ == "__main__":
     main()
 '''
+

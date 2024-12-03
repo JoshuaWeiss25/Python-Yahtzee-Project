@@ -13,8 +13,7 @@ The Rules to Yahtzee:
  - You can choose which dice you would like to keep and which ones you want to reroll
  - When choosing which dice you want to reroll you will be given a prompt on how many dice you want to reroll:
       - You will be asked which die number you wish to keep, please input only one number and place the number you rolled
-      - You will be given the prompt of which die number you wish to keep as many times as the number you places 
-      (i.e. you entered 3 you will get the prompt 3 times)
+      - You will be given the prompt of which die number you wish to keep as many times as the number you placed (i.e. you entered 3 you will get the prompt 3 times)
  - You enter your score depending on what roll you got:
       - these are the possible combos:
             Aces: Having at least one 1 dice (point value: the sum of all your 1s)
@@ -30,28 +29,24 @@ The Rules to Yahtzee:
             Large Straight: A 1, 2, 3, 4, and 5 or a 2, 3, 4, 5, and 6 (worth 40 points)
             Yahtzee: Five identical dice (worth 50 points)
             Chance: Any assortment of 5 dice (point value: the sum of all your dice)
-      - At times, it may be neccessary to put a score of 0 in a space (sometimes called "goose-ing" the space). This is allowed, but only recomended if you 
-        have already taken your "Chance". Choose which slot wisely.
+      - At times, it may be neccessary to put a score of 0 in a space (sometimes called "goose-ing" the space). This is allowed, but only recomended if you have already taken your "Chance". Choose which slot wisely.
  - At the end of the game you add up all your scores
       - For the top subtotal (Aces, Twos, Threes, Fours, Fives, Sixes) on the scoreboard, if you score higher than or equal to 63 in total, you get a bonus of 35 points
       - A top subtotal of exactly 63 can gotten from having 3 of each number for each slot.
- - At the beginning of the game you will be asked a number of players; there is no limit, but playing with too many 
-   people could result in unintended consequences. See warning at bottom of document.
+ - At the beginning of the game you will be asked a number of players; there is no limit, but playing with too many people could result in unintended consequences. See warning at bottom of document.
  - After finishing your rolls, you will be given a prompt to where you want to place your roll in your scorecard
  - This will continue until the 13 rounds are finished, and whoever has the highest amount of points wins
 
-notes about inputs:
- - you cannot undo an input, so be carefull
- - all numerical inputs require the number in numerical form, and not in text form. (i.e. "2" and not "two", or "6" and not "six")
- - if you enter an invalid input, you will be told as such and asked the same question again
- - when re-rolling dice, if you enter a number that you haven't rolled, it will be ignored.
-     - on that same track, if you need to keep multiple of a number, enter the number twice
+Notes about inputs:
+ - You cannot undo an input, so be carefull
+ - All numerical inputs require the number in numerical form, and not in text form. (i.e. "2" and not "two", or "6" and not "six")
+ - If you enter an invalid input, you will be told as such and asked the same question again
+ - When re-rolling dice, if you enter a number that you haven't rolled, it will be ignored.
+     - On that same track, if you need to keep multiple of a number, enter the number twice
+ - When inputing the row you wish to play, use one of the codes in parenthasis next to the row name in the displayed scorecard. The valid inputs are: 1s; 2s; 3s; 4s; 5s; 6s; 3ofK; 4ofK; FH; SmS; LgS; Yah; Cha
 
 
 What can too many players do?
-      While the game theoretically supports up to the integer limit (2147483647) of players, high number of players would significantly 
-      increase the time to run everything, and can even lead to crashes. In addition, due to limitations the code not being
-      able to delete old scorecards, it would lead to large file sizes. (it can overwrite old scorecards, however, and does
-      every game.) 
+      While the game theoretically supports up to the integer limit (2147483647) of players, high number of players would significantly increase the time to run everything, and can even lead to crashes. In addition, due to limitations the code not being able to delete old scorecards, it would lead to large file sizes. (it can overwrite old scorecards, however, and does every game.) 
 
       In addition, depending on your screen size, too many players can lead to too many columns to properly display the scorecard table

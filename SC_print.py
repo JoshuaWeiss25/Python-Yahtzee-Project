@@ -104,7 +104,8 @@ class SCtable:
             self.grandTotal[i]=bottomTotal+topTotal
             self.board[18][i+1] = self.grandTotal[i]
             
-            
+    def get_grand(self):
+        return self.grandTotal
             
     def printTable(self):
         self.update_table()
