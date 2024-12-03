@@ -1,6 +1,7 @@
-Hi! My name is Josh. I took CSC 200 at URI, and this was a group project. The assignment was to make a game; my group chose to make Yahtzee.
+# Hi! 
+My name is Josh. I took CSC 200 at URI, and this was a group project. The assignment was to make a game; my group chose to make Yahtzee.
 
-Some more info about the game:
+## Some more info about the game:
   - The game is entirely run and played in the terminal
   - run the game by running `main()` in `main.py`. How to do that depends where you are running it from (like what IDE you use).
   - The game can *technically* ***theoretically*** support up to the integer limit of players. The limitations are:
@@ -15,10 +16,12 @@ Some more info about the game:
 
 
 
-There are a couple things that I didn't get the chance to do here and I might revisit in the future if I have the time.
-- Save states
-  - becasue of the way I saved the scores, the game lends itself to being able to continue a previous game
-  - I just need to save the state of the game (Round number, player number) and learn/figure out how to start the loops in the middle
-- Yahtzee Bonus: what happens when you get yahtzee multiple times
-- Revamp the user interface for rolling the dice. It's weird and not very intuitive
-- fix the weird way the rules print to the terminal
+## There are a couple things that I didn't get the chance to do here and I might revisit in the future if I have the time.
+  - Save states
+    - becasue of the way I saved the scores, the game lends itself to being able to continue a previous game
+    - I just need to save the state of the game (Round number, player number) and learn/figure out how to start the loops in the middle
+  - Yahtzee Bonus: what happens when you get yahtzee multiple times
+  - Revamp the user interface for rolling the dice. It's weird and not very intuitive
+  - fix the weird way the rules print to the terminal
+
+  **If I ever get to doing these, it will likely be in a branch**
