@@ -10,8 +10,8 @@ My name is Josh. I took CSC 200 at URI, and this was a group project. The assign
     - screen size (for displaying the scores)
   - If it's in the `/Extras/` folder, that means it isn't needed to run the game
     - `Reflection(git).md` is a written relfection on the project based on the assignment, with the names of my two partners censored. I reflect on the process of making the game and the challenges I faced. Might be worth a read, there is a funny story or two in there.
-    - `testing.py` is a file where I manualy constructed scorecards to test certain blocks of code. keeping it for a history. not needed to run the game at all.
-  - rules and syntax to play the game can be found in `UserGuide.txt` (which can be printed to terminal at the begining of game)
+    - `testing.py` and other files named some variation of that are files where I manualy constructed scorecards to test certain blocks of code. Keeping it for a history. not needed to run the game at all.
+  - Rules and syntax to play the game can be found in `UserGuide.txt` (which can be printed to terminal at the begining of game)
 
 
 
