@@ -148,9 +148,13 @@ def row_FH(player_num,dice):
 def row_SmS(player_num,dice):
     score=0
     dice.sort()
-    dice=list(set(dice))                                        #gets rid of duplicates
-    if dice==[1,2,3,4] or dice==[2,3,4,5] or dice==[3,4,5,6]:   #check all possible combinations
-        score=30
+    dice=list(set(dice))                                        #order the dice rolls and get rid of duplicates
+    j=1   
+    for i in range(len(dice)-1):                                #loop over the dice entries except for the last one
+        if dice[i] == (dice[i+1]-1):                            #check all instances where the rolls are increments of each other
+            j+=1
+    if j >= 4:                                                  #check that this happened at least 4 times
+        score = 30
     if not get_SC(player_num)["SmS"][0]:                        #run only if the row hasn't been scored before
         edit_SC(player_num,"SmS",[True,score])
         print(f"You played a {score} in your Small Straight.")
